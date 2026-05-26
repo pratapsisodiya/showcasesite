@@ -27,6 +27,7 @@ export interface Project {
   live: string;
   accent: string;
   category: "AI" | "SaaS" | "Mobile";
+  screenshots?: string[];
 }
 
 export const PROJECTS: Project[] = [
@@ -52,6 +53,13 @@ export const PROJECTS: Project[] = [
     live: "#",
     accent: "#0ea5e9",
     category: "SaaS",
+    screenshots: [
+      "/assets/cureq/landing.jpg",
+      "/assets/cureq/dashboard_page.png",
+      "/assets/cureq/doctor_dashboard.png",
+      "/assets/cureq/reception_page.png",
+      "/assets/cureq/queuu_model.png"
+    ],
   },
   {
     id: "zap-bot",

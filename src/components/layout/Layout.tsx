@@ -10,6 +10,7 @@ import { PageTransition } from "./PageTransition";
 import { HomePage } from "../../pages/HomePage";
 import { AboutPage } from "../../pages/AboutPage";
 import { ProjectsPage } from "../../pages/ProjectsPage";
+import { ProjectDetailPage } from "../../pages/ProjectDetailPage";
 import { ContactPage } from "../../pages/ContactPage";
 
 export const Layout = memo(() => {
@@ -21,10 +22,11 @@ export const Layout = memo(() => {
       <Navbar />
       <AnimatePresence mode="wait">
         <Routes>
-          <Route path="/"         element={<PageTransition><HomePage /></PageTransition>} />
-          <Route path="/about"    element={<PageTransition><AboutPage /></PageTransition>} />
-          <Route path="/projects" element={<PageTransition><ProjectsPage /></PageTransition>} />
-          <Route path="/contact"  element={<PageTransition><ContactPage /></PageTransition>} />
+          <Route path="/"             element={<PageTransition><HomePage /></PageTransition>} />
+          <Route path="/about"        element={<PageTransition><AboutPage /></PageTransition>} />
+          <Route path="/projects"     element={<PageTransition><ProjectsPage /></PageTransition>} />
+          <Route path="/projects/:id" element={<PageTransition><ProjectDetailPage /></PageTransition>} />
+          <Route path="/contact"      element={<PageTransition><ContactPage /></PageTransition>} />
         </Routes>
       </AnimatePresence>
       <Footer />

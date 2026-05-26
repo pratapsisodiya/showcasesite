@@ -1,4 +1,5 @@
 import { memo, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import Tilt from "react-parallax-tilt";
 import { PROJECTS } from "../constants/data";
 import { Icon } from "../components/icons/Icons";
@@ -37,26 +38,28 @@ export const ProjectsPage = memo(() => {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))", gap: "12px" }}>
           {PROJECTS.filter(p => filter === "All" || p.category === filter).map((p, i) => (
             <FadeIn key={p.id} delay={i * 0.06}>
-              <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} perspective={1400} scale={1.012} transitionSpeed={600} glareEnable glareMaxOpacity={0.04} glarePosition="all" style={{ borderRadius: "var(--r-lg)", height: "100%" }}>
-                <SpotlightCard accent={p.accent.replace("#", "").match(/.{2}/g)!.map(h => parseInt(h, 16)).join(",")} style={{ padding: "24px", height: "100%", display: "flex", flexDirection: "column", gap: "12px" }}>
-                  <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: p.accent, zIndex: 2 }} />
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                    <div style={{ width: "36px", height: "36px", borderRadius: "9px", background: p.accent + "12", display: "flex", alignItems: "center", justifyContent: "center", color: p.accent }}><Icon.Code /></div>
-                    <div style={{ display: "flex", gap: "4px" }}>
-                      <a href={p.github} style={{ width: "26px", height: "26px", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-3)", border: "1px solid var(--border)" }}><Icon.GitHub /></a>
-                      <a href={p.live}   style={{ width: "26px", height: "26px", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-3)", border: "1px solid var(--border)" }}><Icon.ArrowUpRight /></a>
+              <Link to={`/projects/${p.id}`} style={{ textDecoration: "none", color: "inherit", display: "block", height: "100%" }}>
+                <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} perspective={1400} scale={1.012} transitionSpeed={600} glareEnable glareMaxOpacity={0.04} glarePosition="all" style={{ borderRadius: "var(--r-lg)", height: "100%", cursor: "pointer" }}>
+                  <SpotlightCard accent={p.accent.replace("#", "").match(/.{2}/g)!.map(h => parseInt(h, 16)).join(",")} style={{ padding: "24px", height: "100%", display: "flex", flexDirection: "column", gap: "12px" }}>
+                    <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "2px", background: p.accent, zIndex: 2 }} />
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                      <div style={{ width: "36px", height: "36px", borderRadius: "9px", background: p.accent + "12", display: "flex", alignItems: "center", justifyContent: "center", color: p.accent }}><Icon.Code /></div>
+                      <div style={{ display: "flex", gap: "4px" }}>
+                        <a href={p.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ width: "26px", height: "26px", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-3)", border: "1px solid var(--border)" }}><Icon.GitHub /></a>
+                        <a href={p.live} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ width: "26px", height: "26px", borderRadius: "6px", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--text-3)", border: "1px solid var(--border)" }}><Icon.ArrowUpRight /></a>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: "15.5px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "3px" }}>{p.title}</h3>
-                    <p style={{ fontSize: "12px", color: p.accent, fontWeight: 500 }}>{p.tagline}</p>
-                  </div>
-                  <p style={{ fontSize: "13px", color: "var(--text-2)", lineHeight: 1.65, flex: 1 }}>{p.description}</p>
-                  <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
-                    {p.tech.map(t => <Chip key={t}>{t}</Chip>)}
-                  </div>
-                </SpotlightCard>
-              </Tilt>
+                    <div>
+                      <h3 style={{ fontSize: "15.5px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "3px" }}>{p.title}</h3>
+                      <p style={{ fontSize: "12px", color: p.accent, fontWeight: 500 }}>{p.tagline}</p>
+                    </div>
+                    <p style={{ fontSize: "13px", color: "var(--text-2)", lineHeight: 1.65, flex: 1 }}>{p.description}</p>
+                    <div style={{ display: "flex", gap: "4px", flexWrap: "wrap" }}>
+                      {p.tech.map(t => <Chip key={t}>{t}</Chip>)}
+                    </div>
+                  </SpotlightCard>
+                </Tilt>
+              </Link>
             </FadeIn>
           ))}
         </div>
