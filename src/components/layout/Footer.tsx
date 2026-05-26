@@ -7,7 +7,6 @@ import { Icon } from "../icons/Icons";
 const FOOTER_LINKS = [
   { to: "/about",    label: "About"    },
   { to: "/projects", label: "Projects" },
-  { to: "/blog",     label: "Blog"     },
   { to: "/contact",  label: "Contact"  },
 ];
 
@@ -77,14 +76,6 @@ export const Footer = memo(() => {
                 <motion.div animate={{ scale: [1, 1.5, 1] }} transition={{ repeat: Infinity, duration: 2 }}
                   style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#16a34a", willChange: "transform", flexShrink: 0 }} />
                 <span style={{ fontSize: "12.5px", color: "var(--text-2)" }}>Available for work</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
-                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#7c3aed", flexShrink: 0 }} />
-                <span style={{ fontSize: "12.5px", color: "var(--text-2)" }}>@ Tars Technologies</span>
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: "7px" }}>
-                <div style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#b45309", flexShrink: 0 }} />
-                <span style={{ fontSize: "12.5px", color: "var(--text-2)" }}>Deloitte incoming</span>
               </div>
             </div>
           </div>

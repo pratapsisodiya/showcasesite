@@ -2,15 +2,14 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useScroll, useTransform } from "framer-motion";
-import { ME, TECH_STACK, PROJECTS, POSTS } from "../constants/data";
+import { ME, TECH_STACK, PROJECTS } from "../constants/data";
 import { Icon } from "../components/icons/Icons";
 import { FadeIn } from "../components/ui/FadeIn";
 import { SolidBtn } from "../components/ui/SolidBtn";
 import { GhostBtn } from "../components/ui/GhostBtn";
 import { SpotlightCard } from "../components/ui/SpotlightCard";
 import { Chip } from "../components/ui/Chip";
-import { Tag } from "../components/ui/Tag";
-import { HeroOrb } from "../components/three/HeroOrb";
+import { TorusKnotCanvas } from "../components/three/TorusKnotCanvas";
 import { Typewriter } from "../components/home/Typewriter";
 import { Counter } from "../components/home/Counter";
 import Tilt from "react-parallax-tilt";
@@ -91,7 +90,7 @@ export const HomePage = memo(() => {
               <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={1000} transitionSpeed={2000} scale={1.02} gyroscope={true} style={{ height: "clamp(320px, 45vw, 500px)", display: "flex", justifyContent: "center", alignItems: "center", position: "relative" }}>
                 <div style={{ position: "absolute", width: "120%", height: "120%", background: "radial-gradient(circle, rgba(124,58,237,0.15) 0%, transparent 60%)", filter: "blur(40px)", zIndex: 0, pointerEvents: "none" }} />
                 <div style={{ width: "100%", height: "100%", zIndex: 1 }}>
-                  <HeroOrb />
+                  <TorusKnotCanvas />
                 </div>
               </Tilt>
             </motion.div>
@@ -190,48 +189,6 @@ export const HomePage = memo(() => {
               </div>
             </div>
           </FadeIn>
-        </div>
-      </section>
-
-      {/* LATEST POSTS */}
-      <section style={{ padding: "80px 0", borderTop: "1px solid var(--border)" }}>
-        <div className="container">
-          <FadeIn>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: "40px", flexWrap: "wrap", gap: "12px" }}>
-              <div>
-                <p style={{ fontSize: "11.5px", fontWeight: 600, color: "var(--text-3)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "8px" }}>Writing</p>
-                <h2 style={{ fontSize: "clamp(1.6rem,3vw,2.4rem)", letterSpacing: "-0.03em" }}>Latest posts</h2>
-              </div>
-              <Link to="/blog" style={{ fontSize: "13px", fontWeight: 500, color: "var(--text-2)", display: "flex", alignItems: "center", gap: "4px", textDecoration: "none" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--text-1)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-2)")}>
-                All posts <Icon.ArrowUpRight />
-              </Link>
-            </div>
-          </FadeIn>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            {POSTS.slice(0, 4).map((post, i) => (
-              <FadeIn key={post.id} delay={i * 0.05}>
-                <div
-                  style={{ padding: "20px 0", borderBottom: i < 3 ? "1px solid var(--border)" : "none", display: "flex", justifyContent: "space-between", alignItems: "center", gap: "20px", cursor: "pointer", flexWrap: "wrap", transition: "opacity 0.15s" }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "0.6"; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
-                >
-                  <div style={{ flex: 1, minWidth: "200px" }}>
-                    <div style={{ display: "flex", gap: "8px", alignItems: "center", marginBottom: "6px", flexWrap: "wrap" }}>
-                      <Tag accent="#52525b">{post.category}</Tag>
-                      <span style={{ fontSize: "11.5px", color: "var(--text-3)", display: "flex", alignItems: "center", gap: "3px" }}><Icon.Clock /> {post.readTime}</span>
-                    </div>
-                    <p style={{ fontSize: "clamp(13.5px,1.2vw,15px)", fontWeight: 600, letterSpacing: "-0.02em", color: "var(--text-1)", lineHeight: 1.35 }}>{post.title}</p>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px", flexShrink: 0 }}>
-                    <span style={{ fontSize: "11.5px", color: "var(--text-3)", fontFamily: "'SF Mono','Fira Code',monospace" }}>{post.date}</span>
-                    <Icon.ArrowUpRight />
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
         </div>
       </section>
     </>

@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { SKILLS, EXPERIENCE } from "../constants/data";
+import { SKILLS, EXPERIENCE, ACHIEVEMENTS, CERTIFICATIONS } from "../constants/data";
 import { Icon } from "../components/icons/Icons";
 import { FadeIn } from "../components/ui/FadeIn";
 import { Rule } from "../components/ui/Rule";
@@ -7,12 +7,11 @@ import { Tag } from "../components/ui/Tag";
 import { Chip } from "../components/ui/Chip";
 import { SpotlightCard } from "../components/ui/SpotlightCard";
 import { SkillRing } from "../components/about/SkillRing";
-import { TorusKnotCanvas } from "../components/three/TorusKnotCanvas";
 
 const ABOUT_SECTIONS = [
-  { heading: "Background",         text: "I'm a CS student from Delhi with 3+ years of hands-on experience building full-stack systems and AI-powered products. I started with vanilla JS and CSS, moved through the MERN stack, and now spend most of my time thinking about AI architecture, product design, and scalable system design." },
-  { heading: "What I'm doing now", text: "Currently interning at Tars Technologies building conversational AI features and React dashboards. I'm joining Deloitte as a software engineer after graduation." },
-  { heading: "How I build",        text: "I believe in shipping fast, iterating based on real usage, and writing code that's easy to delete. I think about performance, accessibility, and developer experience from day one — not as afterthoughts." },
+  { heading: "Background",         text: "I'm a Full Stack Developer and Frontend specialist from Chittorgarh, Rajasthan, India, with a deep interest in building high-performance, AI-driven applications and mobile apps. I started with web foundations (JavaScript, CSS), matured through full-stack systems, and currently build production AI agent architectures, cross-platform apps, and scalable web platforms." },
+  { heading: "What I'm doing now", text: "Currently building software systems, shipping apps to the web, Play Store, and App Store, and automating deployment pipelines. I enjoy integrating LLMs and designing clean, responsive user experiences." },
+  { heading: "How I build",        text: "I believe in shipping fast, iterating based on real usage, and writing code that's easy to maintain. I think about performance, responsiveness, and developer experience from day one — not as afterthoughts." },
 ];
 
 export const AboutPage = memo(() => (
@@ -26,8 +25,8 @@ export const AboutPage = memo(() => (
             </svg>
           </div>
           <div style={{ flex: 1 }}>
-            <p style={{ fontWeight: 600, fontSize: "15px", letterSpacing: "-0.02em" }}>Pratap</p>
-            <p style={{ fontSize: "13px", color: "var(--text-2)", marginTop: "2px" }}>Full Stack Engineer · AI Builder · Delhi, India</p>
+            <p style={{ fontWeight: 600, fontSize: "15px", letterSpacing: "-0.02em" }}>Pratap Singh Sisodiya</p>
+            <p style={{ fontSize: "13px", color: "var(--text-2)", marginTop: "2px" }}>Frontend Developer · Full Stack Developer · Chittorgarh, Rajasthan, India</p>
           </div>
           <Tag accent="#16a34a"><Icon.Circle fill="#16a34a" /> Open to work</Tag>
         </div>
@@ -45,21 +44,6 @@ export const AboutPage = memo(() => (
       ))}
 
       <FadeIn>
-        <div style={{ borderRadius: "var(--r-xl)", border: "1px solid var(--border)", background: "var(--bg-subtle)", overflow: "hidden", marginBottom: "48px" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 240px), 1fr))", alignItems: "center" }}>
-            <div style={{ padding: "clamp(20px,4vw,36px)" }}>
-              <p style={{ fontSize: "11px", fontWeight: 600, color: "var(--text-3)", letterSpacing: "0.06em", textTransform: "uppercase", marginBottom: "10px" }}>Craft</p>
-              <h3 style={{ fontSize: "clamp(1.1rem,2.5vw,1.3rem)", letterSpacing: "-0.03em", marginBottom: "10px" }}>Always learning, always building</h3>
-              <p style={{ fontSize: "13.5px", color: "var(--text-2)", lineHeight: 1.7 }}>Every project is a chance to push further. I treat complexity as a puzzle — and document everything so the next builder can move faster.</p>
-            </div>
-            <div style={{ height: "260px" }}>
-              <TorusKnotCanvas />
-            </div>
-          </div>
-        </div>
-      </FadeIn>
-
-      <FadeIn>
         <h2 style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "18px" }}>Technical skills</h2>
       </FadeIn>
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))", gap: "10px", marginBottom: "48px" }}>
@@ -72,7 +56,7 @@ export const AboutPage = memo(() => (
       <FadeIn>
         <h2 style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "20px" }}>Experience</h2>
       </FadeIn>
-      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "48px" }}>
         {EXPERIENCE.map((exp, i) => (
           <FadeIn key={exp.company} delay={i * 0.06}>
             <SpotlightCard style={{ padding: "20px 24px" }}>
@@ -88,6 +72,40 @@ export const AboutPage = memo(() => (
               <div style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
                 {exp.skills.map(sk => <Chip key={sk}>{sk}</Chip>)}
               </div>
+            </SpotlightCard>
+          </FadeIn>
+        ))}
+      </div>
+
+      <Rule />
+      <div style={{ marginBottom: "36px" }} />
+
+      <FadeIn>
+        <h2 style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "20px" }}>Achievements</h2>
+      </FadeIn>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))", gap: "10px", marginBottom: "48px" }}>
+        {ACHIEVEMENTS.map((ach, i) => (
+          <FadeIn key={ach.title} delay={i * 0.05}>
+            <SpotlightCard style={{ padding: "20px 24px", height: "100%", display: "flex", flexDirection: "column", gap: "6px" }}>
+              <p style={{ fontSize: "14px", fontWeight: 600, letterSpacing: "-0.02em", color: "var(--text-1)" }}>{ach.title}</p>
+              <p style={{ fontSize: "13px", color: "var(--text-2)", lineHeight: 1.6 }}>{ach.detail}</p>
+            </SpotlightCard>
+          </FadeIn>
+        ))}
+      </div>
+
+      <Rule />
+      <div style={{ marginBottom: "36px" }} />
+
+      <FadeIn>
+        <h2 style={{ fontSize: "17px", fontWeight: 600, letterSpacing: "-0.02em", marginBottom: "20px" }}>Certifications & Credentials</h2>
+      </FadeIn>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 300px), 1fr))", gap: "10px" }}>
+        {CERTIFICATIONS.map((cert, i) => (
+          <FadeIn key={cert.name} delay={i * 0.05}>
+            <SpotlightCard style={{ padding: "20px 24px", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+              <p style={{ fontSize: "13.5px", fontWeight: 500, lineHeight: 1.5, color: "var(--text-1)", marginBottom: "8px" }}>{cert.name}</p>
+              <span style={{ fontSize: "11px", color: "var(--text-3)", fontFamily: "'SF Mono','Fira Code',monospace" }}>{cert.date}</span>
             </SpotlightCard>
           </FadeIn>
         ))}

@@ -35,7 +35,7 @@ export const ProjectsPage = memo(() => {
         </FadeIn>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 320px), 1fr))", gap: "12px" }}>
-          {PROJECTS.map((p, i) => (
+          {PROJECTS.filter(p => filter === "All" || p.category === filter).map((p, i) => (
             <FadeIn key={p.id} delay={i * 0.06}>
               <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} perspective={1400} scale={1.012} transitionSpeed={600} glareEnable glareMaxOpacity={0.04} glarePosition="all" style={{ borderRadius: "var(--r-lg)", height: "100%" }}>
                 <SpotlightCard accent={p.accent.replace("#", "").match(/.{2}/g)!.map(h => parseInt(h, 16)).join(",")} style={{ padding: "24px", height: "100%", display: "flex", flexDirection: "column", gap: "12px" }}>
